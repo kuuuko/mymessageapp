@@ -1,0 +1,43 @@
+﻿@model MyMessageApp.Models.Message
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Message</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.parentID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.parentID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.order)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.order)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.level)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.level)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.text)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.text)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,38 @@
+﻿@model MyMessageApp.Models.MessageViewModel
+
+@{
+    ViewBag.Title = "MyCreate";
+}
+
+<h2>MyCreate</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>MessageViewModel</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.messageText)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.messageText)
+            @Html.ValidationMessageFor(model => model.messageText)
+        </div>
+
+        <p>
+            <input type="submit" value="Post" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "MyIndex")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
