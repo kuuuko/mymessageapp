@@ -10,5 +10,7 @@ namespace MyMessageApp.Models
         public int id { get; set; }
         public string messageText { get; set; }
         public int identLevel { get; set; }
+        public int plusNumber { get; set; }
+        public int minusNumber { get; set; }
     }
 }

@@ -9,9 +9,10 @@ namespace MyMessageApp.Models
     public class Message
     {
         public int ID { get; set; }
-        public int parentID { get; set; }
-        public int order { get; set; }
-        public int level { get; set; }
+        public int lft { get; set; }
+        public int rgt { get; set; }
+        public int plus { get; set; }
+        public int minus { get; set; }
         public string text { get; set; }
     }
 

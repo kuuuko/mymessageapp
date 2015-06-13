@@ -1,0 +1,10 @@
+﻿@model IEnumerable<MyMessageApp.Models.MessageViewModel>
+
+
+<div class="postfield" id="postField" style="width: 500px; height: 500px; line-height: 3em; overflow: auto; padding: 5px; border: 5px solid navy;">
+    @foreach (var item in Model)
+    {
+        if (item.identLevel == 0) { continue; }
+        @Html.Partial("_viewMessageIdent0", item)
+    }
+</div>

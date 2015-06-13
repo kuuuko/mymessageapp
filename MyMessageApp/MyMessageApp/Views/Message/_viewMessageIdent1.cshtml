@@ -1,0 +1,17 @@
+﻿@model MyMessageApp.Models.MessageViewModel
+
+<div class="messageBoxIndent_@(Model.identLevel < 3 ? Model.identLevel : 3)" >
+    <div class="messageField">
+        @Html.DisplayFor(modelModel => Model.messageText)
+        @Html.DisplayFor(modelModel => Model.identLevel)
+    </div>
+    <div class="replyField">
+        <button onClick='toggledisplay("myDiv_@(Model.id)");'>Replay</button>
+    </div>
+    <div class="submit_replay" id="myDiv_@Model.id" style="display: none">
+        <hr>
+        <div class="Create from">
+            @Html.Partial("_viewMyCreateForm", Model)
+        </div>
+    </div>
+</div>

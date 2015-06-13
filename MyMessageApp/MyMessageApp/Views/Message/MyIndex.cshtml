@@ -3,35 +3,92 @@
 @{
     ViewBag.Title = "MyIndex";
 }
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<style>
+    .messageBoxIndent_1 {
+        width: 300px;
+        padding: 25px;
+        border: 5px solid navy;
+        margin: 5px;
+        margin-left: 10px;
+    }
+    .messageBoxIndent_2 {
+        width: 300px;
+        padding: 25px;
+        border: 5px solid navy;
+        margin: 5px;
+        margin-left: 30px;
+    }
+    .messageBoxIndent_3 {
+        width: 300px;
+        padding: 25px;
+        border: 5px solid navy;
+        margin: 5px;
+        margin-left: 50px;
+    }
 
-<h2>MyIndex</h2>
+    a[type="button"] {
+        background-color: #d3dce0;
+        border: 1px solid #787878;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: 600;
+        padding: 2px;
+        padding-bottom: 4px;
+        width: auto;
+        text-decoration: none;
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.messageText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.identLevel)
-        </th>
-        <th></th>
-    </tr>
+    .messageField {
+        padding: 10px;
+        background-color: white;
+    }
+</style>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.messageText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.identLevel)
-        </td>
-        <td>
-            @Html.ActionLink("Respond", "MyCreate", new { parentId = item.id }) |
-        </td>
-    </tr>
-}
 
-</table>
+<div class="Create from">
+    @Html.Partial("_viewMyCreateForm", Model.First())
+</div>
+    @Html.Partial("_viewMyPostField", Model)
+
+        @*switch (item.identLevel)
+        {
+            case 1: 
+        @Html.Partial("_viewMessageIdent0", item)
+                break;
+            case 2:
+        @Html.Partial("_viewMessageIdent1", item)
+                break;
+            default:
+        @Html.Partial("_viewMessageIdent2", item)
+                break;*@
+
+<script>
+    function toggledisplay(elementID) {
+        (function (style) {
+            style.display = style.display === 'none' ? '' : 'none';
+        })(document.getElementById(elementID).style);
+    }
+</script>
+<script>
+    function RateFunc( itemID, value ) {
+        $.ajax({
+            type: 'POST',
+            url: "/Message/Rate",
+            data: { "commentID" : itemID, "commentValue": value },
+            success: function (RateValue) {
+                if (value > 0) {
+                    document.getElementById("myPlusField_"+ itemID).innerText = RateValue;                    
+                }
+                else {
+                    document.getElementById("myMinusField_" + itemID).innerText = RateValue;         
+                }
+                document.getElementById("myPlusButton_" + itemID).disabled = true;
+                document.getElementById("myMinusButton_" + itemID).disabled = true;
+            },
+            error: function () {
+            alert("Connection Failed. Please Try Again.");
+             }
+        });
+    }
+</script>

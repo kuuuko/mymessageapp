@@ -122,45 +122,79 @@ namespace MyMessageApp.Controllers
 
         //myMethods----------------------------------------------------
         //Message/MyIndex "Get"
-        public ActionResult MyIndex() 
-        { 
-            List<MessageViewModel> msgVM = new List<MessageViewModel>();
-            var tempTable = from m in db.Messages
-                            orderby m.order
-                            select m;
-            foreach (Message item in tempTable)
-                    {
-                        msgVM.Add(new MessageViewModel{ id = item.ID, identLevel = item.level, messageText = item.text});
-                    }
-            return View( msgVM );
+        public ActionResult MyIndex()
+        {
+            return View(functionGetList());
         }
 
-        //Message/MyCreate "Get"
-        public ActionResult MyCreate(int parentId ) 
+        public List<MessageViewModel> functionGetList() 
         {
-            return View(new MessageViewModel { id = parentId });
+            List<MessageViewModel> msgVM = new List<MessageViewModel>();
+            Stack<Message> stack = new Stack<Message>();
+            var tempTable = from m in db.Messages
+                            orderby m.lft
+                            select m;
+            foreach (Message item in tempTable)
+            {
+                if (stack.Count() > 0)
+                {
+                    while (stack.Peek().rgt < item.rgt)
+                    {
+                        stack.Pop();
+                    }
+                }
+                stack.Push(item);
+                msgVM.Add(new MessageViewModel { id = item.ID, messageText = item.text, identLevel = stack.Count - 1, plusNumber = item.plus, minusNumber = item.minus });
+            }
+            return msgVM;
         }
+
+        ////Message/MyCreate "Get"
+        //public ActionResult MyCreate() //int parentId
+        //{
+        //    return View();      //new MessageViewModel { id = parentId }
+        //}
 
         //Message/MyCreate "Post"
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MyCreate(MessageViewModel newMessage) 
+        public ActionResult MyCreate(MessageViewModel newMessage)
         {
-            if( ModelState.IsValid ) 
+            if (ModelState.IsValid)
             {
-                Message parentNode = db.Messages.Find( newMessage.id );
+                var param = db.Messages.Find(newMessage.id).rgt - 1;
                 var myTable = from m in db.Messages
-                              where m.order > parentNode.order
                               select m;
-                foreach (var item in myTable) 
+                foreach (var item in myTable)
                 {
-                    item.order++;
+                    if (item.lft > param) { item.lft += 2; }
+                    if (item.rgt > param) { item.rgt += 2; }
                 }
-                db.Messages.Add(new Message { level = parentNode.level + 1, order = parentNode.order + 1, parentID = parentNode.ID, text = newMessage.messageText });
+                db.Messages.Add(new Message { lft = param + 1, rgt = param + 2, text = newMessage.messageText, plus = 0 , minus = 0});
+
                 db.SaveChanges();
                 return RedirectToAction("MyIndex");
             }
-            return View( newMessage );
+            return View(newMessage);
+        }
+
+        [HttpPost]
+        public int Rate(int commentID, int commentValue) 
+        {
+            Message message = db.Messages.Find(commentID);
+            if (commentValue > 0)
+            {           
+                message.plus += 1;
+                db.SaveChanges();
+                return message.plus;
+            }
+            else
+            {
+                message.minus += 1;
+                db.SaveChanges();
+                return message.minus;
+            }
+           
         }
     }
 }

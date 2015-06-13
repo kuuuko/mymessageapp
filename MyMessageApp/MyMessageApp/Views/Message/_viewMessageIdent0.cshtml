@@ -1,0 +1,41 @@
+﻿@model MyMessageApp.Models.MessageViewModel
+
+<div class="messageBoxIndent_@(Model.identLevel < 3 ? Model.identLevel : 3)" >
+    <div class="messageField">
+        @Html.DisplayFor(model => model.messageText)
+    </div>
+
+    <div class="plusField" id="myPlusField_@(Model.id)">
+        @Html.DisplayFor(model => model.plusNumber)
+    </div>
+    <div class="plusField" id="myMinusField_@(Model.id)">
+        @Html.DisplayFor(model => model.minusNumber)
+    </div>
+
+    <div class="replyButtonField">
+        <button id="myPlusButton_@(Model.id)" onClick='RateFunc(@(Model.id), @(1))'>PLUS</button>
+    </div>
+    <div class="replyButtonField">
+        <button id="myMinusButton_@(Model.id)" onClick='RateFunc(@(Model.id),@(-1))'>MINUS</button> @*"myPlusButton_@(Model.id)","@(Model.id)"*@
+    </div>
+
+    <div class="replyField">
+        <button onClick='toggledisplay("myDiv_@(Model.id)");'>Replay</button>
+    </div>
+
+
+    <div class="submit_replay" id="myDiv_@(Model.id)" style="display: none">
+        <hr>
+        <div class="Create from">
+            @Html.Partial("_viewMyCreateForm", Model)
+        </div>
+    </div>
+</div>
+@*<script>
+    function toggledisplay(elementID) {
+        (function (style) {
+            style.display = style.display === 'none' ? '' : 'none';
+        })(document.getElementById(elementID).style);
+    }
+</script>*@
+

@@ -6,7 +6,8 @@
 
 <h2>MyCreate</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("MyCreate", "Message"))
+{                                                                         
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -19,18 +20,23 @@
             @Html.LabelFor(model => model.messageText)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.messageText)
+            <textarea rows="7" style="max-width:300px" id="messageText" name="messageText"></textarea>
             @Html.ValidationMessageFor(model => model.messageText)
         </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.id)
+            @Html.ValidationMessageFor(model => model.id)
+        </div>*@
+
         <p>
             <input type="submit" value="Post" />
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "MyIndex")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

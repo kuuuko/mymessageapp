@@ -4,7 +4,6 @@ namespace MyMessageApp.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using MyMessageApp.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MyMessageApp.Models.MessageDBContext>
     {
@@ -27,29 +26,6 @@ namespace MyMessageApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.Messages.AddOrUpdate( 
-                p => p.text, 
-                new Message 
-                {
-                   text = "Prva poruka",
-                   level = 0,
-                   order = 0,
-                   parentID = 0,
-                },
-                new Message 
-                {
-                   text = "Druga poruka",
-                   level = 0,
-                   order = 2,
-                   parentID = 0,
-                },
-                new Message 
-                {
-                   text = "Odgovor na Prvu poruku",
-                   level = 1,
-                   order = 1,
-                   parentID = 1,
-                });              
         }
     }
 }

@@ -188,9 +188,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506091539187_InitialCreate.cs" />
-    <Compile Include="Migrations\201506091539187_InitialCreate.Designer.cs">
-      <DependentUpon>201506091539187_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201506101412542_initial.cs" />
+    <Compile Include="Migrations\201506101412542_initial.Designer.cs">
+      <DependentUpon>201506101412542_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506121156531_secondAddPlus.cs" />
+    <Compile Include="Migrations\201506121156531_secondAddPlus.Designer.cs">
+      <DependentUpon>201506121156531_secondAddPlus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506121947274_thirdAddMinus.cs" />
+    <Compile Include="Migrations\201506121947274_thirdAddMinus.Designer.cs">
+      <DependentUpon>201506121947274_thirdAddMinus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -270,7 +278,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -316,6 +326,11 @@
     <Content Include="Views\Message\Delete.cshtml" />
     <Content Include="Views\Message\MyIndex.cshtml" />
     <Content Include="Views\Message\MyCreate.cshtml" />
+    <Content Include="Views\Message\_viewMessageIdent0.cshtml" />
+    <Content Include="Views\Message\_viewMessageIdent1.cshtml" />
+    <Content Include="Views\Message\_viewMessageIdent2.cshtml" />
+    <Content Include="Views\Message\_viewMyCreateForm.cshtml" />
+    <Content Include="Views\Message\_viewMyPostField.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,8 +339,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506091539187_InitialCreate.resx">
-      <DependentUpon>201506091539187_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506101412542_initial.resx">
+      <DependentUpon>201506101412542_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506121156531_secondAddPlus.resx">
+      <DependentUpon>201506121156531_secondAddPlus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506121947274_thirdAddMinus.resx">
+      <DependentUpon>201506121947274_thirdAddMinus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
