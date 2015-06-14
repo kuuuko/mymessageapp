@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="MyMessageApp" namespace="MyMessageApp.Models"><class name="Message" table="Messages" dynamic-update="true" >
+<cache usage="read-write"/>
+<id name="message_Id" column="message_Id" type="int">
+<generator class="native" />
+</id>
+<property name="lft" access="property" column="lft" type="int"></property>
+<property name="rgt" access="property" column="rgt" type="int"></property>
+<property name="plus" access="property" column="plus" type="int"></property>
+<property name="minus" access="property" column="minus" type="int"></property>
+<property name="abuseFlag" access="property" column="abuseFlag" type="bool"></property>
+<property name="text" access="property" column="text" type="string"></property>
+<property name="user_Id" access="property" column="user_Id" type="int"></property>
+<property name="date" access="property" column="date" type="DateTime"></property>
+</class>
+</hibernate-mapping>

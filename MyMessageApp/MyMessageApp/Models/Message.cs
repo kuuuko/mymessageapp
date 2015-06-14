@@ -8,12 +8,15 @@ namespace MyMessageApp.Models
 {
     public class Message
     {
-        public int ID { get; set; }
-        public int lft { get; set; }
-        public int rgt { get; set; }
-        public int plus { get; set; }
-        public int minus { get; set; }
-        public string text { get; set; }
+        public virtual int message_Id { get; set; }
+        public virtual int lft { get; set; }
+        public virtual int rgt { get; set; }
+        public virtual int plus { get; set; }
+        public virtual int minus { get; set; }
+        public virtual string text { get; set; }
+        public virtual bool abuseFlag { get; set; }
+        public virtual DateTime? date { get; set; }
+        public virtual int user_Id { get; set; }
     }
 
     public class MessageDBContext : DbContext
