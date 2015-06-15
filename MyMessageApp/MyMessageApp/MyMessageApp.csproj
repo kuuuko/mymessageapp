@@ -187,27 +187,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506101412542_initial.cs" />
-    <Compile Include="Migrations\201506101412542_initial.Designer.cs">
-      <DependentUpon>201506101412542_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506121156531_secondAddPlus.cs" />
-    <Compile Include="Migrations\201506121156531_secondAddPlus.Designer.cs">
-      <DependentUpon>201506121156531_secondAddPlus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506121947274_thirdAddMinus.cs" />
-    <Compile Include="Migrations\201506121947274_thirdAddMinus.Designer.cs">
-      <DependentUpon>201506121947274_thirdAddMinus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
     <Compile Include="Models\NHibernateSession.cs" />
@@ -316,49 +300,18 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\Message\Details.cshtml" />
-    <Content Include="Views\Message\Create.cshtml" />
-    <Content Include="Views\Message\Edit.cshtml" />
-    <Content Include="Views\Message\Delete.cshtml" />
     <Content Include="Views\Message\MyIndex.cshtml" />
-    <Content Include="Views\Message\MyCreate.cshtml" />
     <Content Include="Views\Message\_viewMessageIdent0.cshtml" />
-    <Content Include="Views\Message\_viewMessageIdent1.cshtml" />
-    <Content Include="Views\Message\_viewMessageIdent2.cshtml" />
     <Content Include="Views\Message\_viewMyCreateForm.cshtml" />
     <Content Include="Views\Message\_viewMyPostField.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506101412542_initial.resx">
-      <DependentUpon>201506101412542_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506121156531_secondAddPlus.resx">
-      <DependentUpon>201506121156531_secondAddPlus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506121947274_thirdAddMinus.resx">
-      <DependentUpon>201506121947274_thirdAddMinus.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
