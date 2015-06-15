@@ -12,116 +12,7 @@ namespace MyMessageApp.Controllers
 {
     public class MessageController : Controller
     {
-        //private MessageDBContext db = new MessageDBContext();
-
-        ////
-        //// GET: /Message/
-
-        //public ActionResult Index()
-        //{
-        //    return View(db.Messages.ToList());
-        //}
-
-        ////
-        //// GET: /Message/Details/5
-
-        //public ActionResult Details(int id = 0)
-        //{
-        //    Message message = db.Messages.Find(id);
-        //    if (message == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(message);
-        //}
-
-        ////
-        //// GET: /Message/Create
-
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        ////
-        //// POST: /Message/Create
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(Message message)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Messages.Add(message);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(message);
-        //}
-
-        ////
-        //// GET: /Message/Edit/5
-
-        //public ActionResult Edit(int id = 0)
-        //{
-        //    Message message = db.Messages.Find(id);
-        //    if (message == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(message);
-        //}
-
-        ////
-        //// POST: /Message/Edit/5
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(Message message)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(message).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(message);
-        //}
-
-        ////
-        //// GET: /Message/Delete/5
-
-        //public ActionResult Delete(int id = 0)
-        //{
-        //    Message message = db.Messages.Find(id);
-        //    if (message == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(message);
-        //}
-
-        ////
-        //// POST: /Message/Delete/5
-
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Message message = db.Messages.Find(id);
-        //    db.Messages.Remove(message);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    db.Dispose();
-        //    base.Dispose(disposing);
-        //}
-
-        //myMethods----------------------------------------------------
+        
         //Message/MyIndex "Get"
         public ActionResult MyIndex()
         {
@@ -134,7 +25,7 @@ namespace MyMessageApp.Controllers
             {
 
                 Stack<Message> stack = new Stack<Message>();
-                List<MessageViewModel> msgVM = new List<MessageViewModel>(); //provjeri da li mozes da radis sa listom ili enum
+                List<MessageViewModel> msgVM = new List<MessageViewModel>();
 
                 var tempTable = session.QueryOver<Message>()
                                        .OrderBy(x => x.lft).Asc
@@ -155,13 +46,7 @@ namespace MyMessageApp.Controllers
                 return msgVM;
             }
         }
-
-        ////Message/MyCreate "Get"
-        //public ActionResult MyCreate() //int parentId
-        //{
-        //    return View();      //new MessageViewModel { id = parentId }
-        //}
-
+      
         //Message/MyCreate "Post"
         [HttpPost]
         public ActionResult MyCreate(MessageViewModel newMessage)
