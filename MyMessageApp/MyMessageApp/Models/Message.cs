@@ -17,6 +17,8 @@ namespace MyMessageApp.Models
         public virtual bool abuseFlag { get; set; }
         public virtual DateTime? date { get; set; }
         public virtual int user_Id { get; set; }
+        public virtual int article_Id { get; set; }
+        public virtual string user_name { get; set; }
     }
 
     public class MessageDBContext : DbContext

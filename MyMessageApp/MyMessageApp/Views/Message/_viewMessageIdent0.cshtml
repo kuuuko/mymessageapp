@@ -1,32 +1,51 @@
 ﻿@model MyMessageApp.Models.MessageViewModel
+    
 
 <div class="messageBoxIndent_@(Model.identLevel < 3 ? Model.identLevel : 3)" >
+    <div >
+        <div class="abuse_button" style="float:right">
+            <button id="abuse_@(Model.id)" onclick="abuseFunc(@(Model.id))"     >ReportAbuse</button>
+        </div>
+        <div class="user_name" >
+            @Html.DisplayFor(model => model.user_name)
+        </div>
+        
+    </div>
+    <div class="date">
+        @Html.DisplayFor(model => model.viewdate)
+    </div>
     <div class="messageField">
         @Html.DisplayFor(model => model.messageText)
     </div>
 
-    <div class="plusField" id="myPlusField_@(Model.id)">
-        @Html.DisplayFor(model => model.plusNumber)
-    </div>
-    <div class="plusField" id="myMinusField_@(Model.id)">
-        @Html.DisplayFor(model => model.minusNumber)
-    </div>
-
-    <div class="replyButtonField">
-        <button id="myPlusButton_@(Model.id)" onClick='RateFunc(@(Model.id), @(1))'>PLUS</button>
-    </div>
-    <div class="replyButtonField">
-        <button id="myMinusButton_@(Model.id)" onClick='RateFunc(@(Model.id),@(-1))'>MINUS</button> @*"myPlusButton_@(Model.id)","@(Model.id)"*@
+    <div style="float:left">
+        <div class="plusField" style="float:left" id="myPlusField_@(Model.id)">
+            @Html.DisplayFor(model => model.plusNumber)
+        </div>
+        <div class="replyButtonField" style="float:left">
+            <button id="myPlusButton_@(Model.id)" onClick='RateFunc(@(Model.id), @(1))'>PLUS</button>
+        </div>
     </div>
 
-    <div class="replyField">
-        <button onClick='toggledisplay("myDiv_@(Model.id)");'>Replay</button>
+    <div style="float:left">
+        <div class="plusField" style="float:left" id="myMinusField_@(Model.id)">
+            @Html.DisplayFor(model => model.minusNumber)
+        </div>
+        <div class="replyButtonField" style="float:left">
+            <button id="myMinusButton_@(Model.id)" onClick='RateFunc(@(Model.id),@(-1))'>MINUS</button> @*"myPlusButton_@(Model.id)","@(Model.id)"*@
+        </div>
+    </div>
+    
+    
+
+    <div class="replyField" >
+        <button class="ReplyButton" onClick='toggledisplay("myDiv_@(Model.id)");'>Replay</button>
     </div>
 
 
     <div class="submit_replay" id="myDiv_@(Model.id)" style="display: none">
         <hr>
-        <div class="Create from">
+        <div class="Create from" id="myForm_@(Model.id)">
             @Html.Partial("_viewMyCreateForm", Model)
         </div>
     </div>

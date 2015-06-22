@@ -88,6 +88,6 @@ E:\Test\mymessageapp\MyMessageApp\MyMessageApp\bin\ko\System.Spatial.resources.d
 E:\Test\mymessageapp\MyMessageApp\MyMessageApp\bin\ru\System.Spatial.resources.dll
 E:\Test\mymessageapp\MyMessageApp\MyMessageApp\bin\zh-Hans\System.Spatial.resources.dll
 E:\Test\mymessageapp\MyMessageApp\MyMessageApp\bin\zh-Hant\System.Spatial.resources.dll
-E:\Test\mymessageapp\MyMessageApp\MyMessageApp\obj\Debug\MyMessageApp.csprojResolveAssemblyReference.cache
 E:\Test\mymessageapp\MyMessageApp\MyMessageApp\obj\Debug\MyMessageApp.dll
 E:\Test\mymessageapp\MyMessageApp\MyMessageApp\obj\Debug\MyMessageApp.pdb
+E:\Test\mymessageapp\MyMessageApp\MyMessageApp\obj\Debug\MyMessageApp.csprojResolveAssemblyReference.cache

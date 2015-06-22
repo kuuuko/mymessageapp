@@ -4,31 +4,47 @@
     ViewBag.Title = "MyCreate";
 }
 
-<h2>MyCreate</h2>
-
-@using (Html.BeginForm("MyCreate", "Message"))
+@using (Ajax.BeginForm("MyCreate", "Message", new AjaxOptions() { OnSuccess = "fja(data, 'error_" + Model.id + "', '" + Model.article_id + "')" })) //InsertionMode = InsertionMode.Replace, UpdateTargetId = ("myForm_"+ Model.id)
 {                                                                         
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>MessageViewModel</legend>
-
-        @Html.HiddenFor(model => model.id)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.messageText)
+        <div class="error-box" id="error_@(Model.id)" style="display: none">
+            <p style="color:red"><b>Polja nisu popunjena!</b></p> 
+        </div>
+        <div class="parentID-field" hidden>
+            <textarea id="parentID" name="parentID">@Model.id</textarea>
+            <textarea id="article_id" name="article_id">@Model.article_id</textarea>
+        </div>
+        <div class="user-name-field">
+            <textarea rows="1" style="max-width:290px" id="user_name" name="user_name"></textarea>
         </div>
         <div class="editor-field">
-            <textarea rows="7" style="max-width:300px" id="messageText" name="messageText"></textarea>
-            @Html.ValidationMessageFor(model => model.messageText)
+            <textarea rows="4" style="max-width:290px" id="messageText" name="messageText"></textarea>
         </div>
 
-        <p>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
             <input type="submit" value="Post" />
-        </p>
-    </fieldset>
 }
+<script>
+    function fja(arg, elementID, artID)
+    {
+      if (arg == 'True') {
+            $.ajax({
+                url: "/Message/Refresh",
+                type: 'GET',
+                data: { "article_id": artID },
+                success: function (viewRefresh) {
+                    $("#postField").html(viewRefresh)
+                    document.getElementById("error_12").style.display = 'none'
+                },
+               
+            })
+        }
+        else
+        {
+          document.getElementById( ""+elementID+"" ).style.display = ''
+        }
+    }
+    </script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

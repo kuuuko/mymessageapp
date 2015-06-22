@@ -1,31 +1,23 @@
-﻿@model IEnumerable<MyMessageApp.Models.MessageViewModel>
-
-@{
-    ViewBag.Title = "MyIndex";
-}
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+﻿<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <style>
-    .abuse_button {
-        
-    }
     .messageBoxIndent_1 {
         width: 300px;
-        padding: 10px;
-        border: 2px solid navy;
+        padding: 25px;
+        border: 5px solid navy;
         margin: 5px;
         margin-left: 10px;
     }
     .messageBoxIndent_2 {
         width: 300px;
-        padding: 10px;
-        border: 2px solid navy;
+        padding: 25px;
+        border: 5px solid navy;
         margin: 5px;
         margin-left: 30px;
     }
     .messageBoxIndent_3 {
         width: 300px;
-        padding: 10px;
-        border: 2px solid navy;
+        padding: 25px;
+        border: 5px solid navy;
         margin: 5px;
         margin-left: 50px;
     }
@@ -46,26 +38,12 @@
         padding: 10px;
         background-color: white;
     }
-
-    .plusField {
-        margin-right: 10px;
-        padding: 2px
-    }
-    .replyButtonField {
-       margin-right: 10px;
-    }
-    .replyField {
-       margin-left: 10px;
-    }
-    .ReplyButton {
-         margin-left: 10px;
-    }
-
 </style>
+
 <div class="Create from">
     @Html.Partial("_viewMyCreateForm", Model.First())
 </div>
-    <div class="postfield" id="postField" style="width: 500px; height: 700px; line-height: 3em; overflow: auto; padding: 5px; border: 5px solid navy;">
+    <div class="postfield" id="postField" style="width: 500px; height: 500px; line-height: 3em; overflow: auto; padding: 5px; border: 5px solid navy;">
     @Html.Partial("_viewPostField", Model)
 </div>
 
@@ -77,10 +55,9 @@
     }
 </script>
 <script>
-    function RateFunc(itemID, value) {
+    function RateFunc( itemID, value ) {
         $.ajax({
             url: "/Message/Rate",
-            type: 'POST',
             data: { "commentID": itemID, "commentValue": value },
             success: function (RateValue) {
                 if (value > 0) {
@@ -93,23 +70,8 @@
                 document.getElementById("myMinusButton_" + itemID).disabled = true;
             },
             error: function () {
-            alert("Connection Failed. Please Try Again."+ d);
+            alert("Connection Failed. Please Try Again.");
              }
         });
     }
-</script>
-<script>
-             function abuseFunc(itemID) {
-                 $.ajax({
-                     url: "/Message/ReportAbuse",
-                     type: 'POST',
-                     data: { "commentID": itemID },
-                     success: function () {
-                         alert("Komentar je prijavljen!!!")
-                     },
-                     error: function () {
-                         alert("Connection Failed. Please Try Again." + d);
-                     }
-                 });
-             }
 </script>

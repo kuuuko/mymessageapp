@@ -194,6 +194,7 @@
     </Compile>
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
+    <Compile Include="Models\NewsArticle.cs" />
     <Compile Include="Models\NHibernateSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -263,6 +264,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Models\NHibernate\Message.hbm.xml" />
+    <Content Include="Models\NHibernate\NewsArticle.hbm.xml" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -308,6 +310,10 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Message\MyIndex.cshtml" />
     <Content Include="Views\Message\_viewMessageIdent0.cshtml" />
+    <Content Include="Views\Message\_viewPostField.cshtml" />
+    <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\_viewMyIndex.cshtml" />
     <Content Include="Views\Message\_viewMyCreateForm.cshtml" />
   </ItemGroup>
   <ItemGroup />

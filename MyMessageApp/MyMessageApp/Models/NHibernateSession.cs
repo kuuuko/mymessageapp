@@ -15,7 +15,9 @@ namespace MyMessageApp.Models
             var configurationPath = HttpContext.Current.Server.MapPath(@"~\Models\NHibernate\hibernate.cfg.xml");
             configuration.Configure(configurationPath);
             var messageConfigurationFile = HttpContext.Current.Server.MapPath(@"~\Models\NHibernate\Message.hbm.xml");
+            var articleConfigurationFile = HttpContext.Current.Server.MapPath(@"~\Models\NHibernate\NewsArticle.hbm.xml");
             configuration.AddFile(messageConfigurationFile);
+            configuration.AddFile(articleConfigurationFile);
             ISessionFactory sessionFactory = configuration.BuildSessionFactory();
             return sessionFactory.OpenSession();
         }

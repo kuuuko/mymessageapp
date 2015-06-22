@@ -12,5 +12,7 @@
 <property name="text" access="property" column="text" type="string"></property>
 <property name="user_Id" access="property" column="user_Id" type="int"></property>
 <property name="date" access="property" column="date" type="DateTime"></property>
+<property name="article_Id" access="property" column="article_Id" type="int"></property>
+<property name="user_name" access="property" column="user_name" type="string"></property>
 </class>
 </hibernate-mapping>

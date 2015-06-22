@@ -1,0 +1,7 @@
+﻿@model IEnumerable<MyMessageApp.Models.MessageViewModel>
+
+@foreach (var item in Model)
+    {
+        if (item.identLevel == 0) { continue; }
+        @Html.Partial("_viewMessageIdent0", item)
+    }
